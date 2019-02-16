@@ -40,27 +40,35 @@ R
 ## Tweetsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null:false, foreign_key: true|
-|image|string|null:false, foreign_key: true|
+|text|text|
+|image|string|
+|user_id|reference|null:false, foreign_key: true|
+|group_id|reference|null:false, foreign_key: true|
 
 
 ### Association
 - belongs_to:user
 - belongs_to:group
 
-##Groupテーブル
+##Groupsテーブル
 |Colum|Type|Options|
 |-----|----|-------|
-|name|integer|null: false, foreign_key: true|
-|user_id|refference|null:false, foreign_key: true|
-|tweets_id|refference|null:false, foreign_key: true|
+|name|string|null: false, foreign_key: true|
 
 ### Association
 - has_many :users
 - has_many :tweets
 
+##Group_userテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|user_id|reference|null:false, foreign_key: true|
+|group_id|reference|null:false, foreign_key: true|
 
 
+### Association
+- has_many :users, through: :group_user
+- has_many :groups, through: :group_user
 
 
 
