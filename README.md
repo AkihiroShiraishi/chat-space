@@ -30,12 +30,11 @@ R
 |id|integer|null: false, foreign_key: true|
 |email|integer|null:false, foreign_key: true|
 |password|integer|null:false, foreign_key: true|
-name|integer|null:false, foreign_key: true|
+|name|integer|null:false, foreign_key: true|
 
 ### Association
 - has_many :tweets
-- belongs_to :chat
-
+- belongs_to :group
 
 
 ## Tweetsテーブル
@@ -47,4 +46,14 @@ name|integer|null:false, foreign_key: true|
 
 ### Association
 - belongs_to:user
-- belongs_to:chat
+- belongs_to:group
+
+##Groupテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|id|integer|null: false, foreign_key: true|
+|name|integer|null: false, foreign_key: true|
+
+### Association
+- has_many :users
+- has_maby :tweets
