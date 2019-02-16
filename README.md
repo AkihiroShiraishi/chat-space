@@ -24,3 +24,50 @@ Things you may want to cover:
 * ...
 R
 
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null:false|
+|password|string|null:false|
+|name|string|null:false, index: true, unique: true|
+
+
+### Association
+- has_many :tweets
+- has_many :groups, through: :group_users
+- has_many :group_users
+
+
+## Tweetsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|
+|image|string|
+|user_id|reference|null:false, foreign_key: true|
+|group_id|reference|null:false, foreign_key: true|
+
+
+### Association
+- belongs_to:user
+- belongs_to:group
+
+##Groupsテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :users, through: :group_users
+- has_many :tweets
+- has_many :group_users
+
+##Group_usersテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|user_id|reference|null:false, foreign_key: true|
+|group_id|reference|null:false, foreign_key: true|
+
+
+### Association
+- belongs_to :user
+- belongs_to :group
