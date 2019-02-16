@@ -29,12 +29,12 @@ R
 |------|----|-------|
 |email|string|null:false|
 |password|string|null:false|
-|name|string|null:false|
+|name|string|null:false, index: true, unique: true|
 
 
 ### Association
 - has_many :tweets
-- has_many :groups , through: :group_users
+- has_many :groups, through: :group_users
 - has_many :group_users
 
 
@@ -57,7 +57,7 @@ R
 |name|string|null: false|
 
 ### Association
-- has_many :users , through: :group_users
+- has_many :users, through: :group_users
 - has_many :tweets
 - has_many :group_users
 
@@ -71,9 +71,3 @@ R
 ### Association
 - belongs_to :user
 - belongs_to :group
-
-
-
-
-
-
