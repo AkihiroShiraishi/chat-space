@@ -27,14 +27,15 @@ R
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|email|integer|null:false, foreign_key: true|
-|password|integer|null:false, foreign_key: true|
-|name|integer|null:false, foreign_key: true|
+|email|string|null:false, foreign_key: true|
+|password|string|null:false, foreign_key: true|
+|name|string|null:false, foreign_key: true|
 
 
 ### Association
 - has_many :tweets
-- belongs_to :group
+- has_many :groups , through: :group_users
+- has_many :group_users
 
 
 ## Tweetsテーブル
@@ -56,8 +57,9 @@ R
 |name|string|null: false, foreign_key: true|
 
 ### Association
-- has_many :users
+- has_many :users , through: :group_users
 - has_many :tweets
+- has_many :group_users
 
 ##Group_userテーブル
 |Colum|Type|Options|
@@ -67,8 +69,8 @@ R
 
 
 ### Association
-- has_many :users, through: :group_user
-- has_many :groups, through: :group_user
+- belongs_to :user
+- belongs_to :group
 
 
 
