@@ -1,0 +1,10 @@
+%p.wrapper__main__body__chat_comment_name
+ = message.user.name
+%p.wrapper__main__body__chat_comment_time
+ = message.created_at.strftime("%Y/%m/%d %H:%M")
+- if message.content.present?
+ %p.wrapper__main__body__chat_comment_text
+  = message.content
+.image-a
+ = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+

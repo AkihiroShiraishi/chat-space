@@ -1,4 +1,5 @@
-
+%header
+ %p グループを作成しました。
 .wrapper
  .wrapper__side
   .wrapper__side__header
@@ -14,13 +15,24 @@
       .group__name
        = group.name
       .group__message
-       = group.show_last_message
+       メッセージはまだありません。
  .wrapper__main
   .wrapper__main__header
    .wrapper__main__header__contents
+    %h2 独り言
     = link_to edit_group_path(current_user) do
      Edit
+    %p なんだかな〜〜
+
   .wrapper__main__body
    .wrapper__main__body__chat
+    %p.wrapper__main__body__chat_comment_name Aki
+    %p.wrapper__main__body__chat_comment_time 2019/02/05(Fri) 18:54:34
+    %p.wrapper__main__body__chat_comment_text なんだかな〜〜
+   .wrapper__main__body__submit
+    .wrapper__main__body__submit__text
+     %input(placeholder = "type a message")
+     %a.fa.fa-image
+    %a.button Send
 
 

@@ -10,6 +10,7 @@ header{
   &__side{
   float:left;
   width:300px;
+  position:fixed;
    &__header{
      background-color:#253141;
      height:100px;
@@ -40,6 +41,8 @@ header{
      background-color:#2f3e51;
      height:calc(100vh - 100px);
      overflow: scroll;
+     width:300px;
+     position:fixed;
     &__room{
         padding:20px 0 40px 20px;
         .group__name{
@@ -85,11 +88,16 @@ header{
     position: absolute;
     right: 40px;
     text-decoration: none;
+    &:hover{
+      color:white;
+      background-color:#38aef0;
+    }
    }
   }
   &__body{
     &__chat{
      padding: 46px 0 40px 40px;
+     overflow: scroll;
      &_comment_name{
        font-size:16px;
        color:#434A54;
@@ -136,9 +144,12 @@ header{
      .fa-image{
       font-size: 1.3rem;
     position: absolute;
-    top: 3px;
+    top: 15px;
     right: 10px;
     cursor: pointer;
+     }
+     .hidden{
+      display: none;
      }
     }
      .button{
@@ -149,6 +160,12 @@ header{
     color: white;
     cursor: pointer;
     display:inline-block;
+    position:absolute;
+    right:-130px;
+    bottom:0.5px;
+    &:hover{
+      opacity:0.5;
+    }
     }
    }
   }
