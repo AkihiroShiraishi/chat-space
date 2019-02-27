@@ -31,8 +31,8 @@
     = render @messages
    .wrapper__main__body__submit
     .wrapper__main__body__submit__text
-     = form_for [@group, @message] do |f|
-      = f.text_field :content, placeholder: 'type a message'
+     = form_for [@group, @message], id: "new_message" do |f|
+      = f.text_field :content, placeholder: 'type a message', class: "textbox"
       .form__mask
        = f.label :image do
         = fa_icon 'picture-o', class: 'fa-image'
