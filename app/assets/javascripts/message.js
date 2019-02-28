@@ -1,27 +1,20 @@
 $(function(){
   function buildHTML(message){
-    var text = "";
-    if(message.content){
-      text = `<p class = "wrapper__main__body__chat_comment_text">
-     ${message.content}
-     </p>`
-    }
-    var image = "";
-    if(message.image.url){
-      image =`<div class="image-a">
+
+    var image = (message.image.url)? `<div class="image-a">
       <image src = "${ message.image.url}" class ="lower-message__image">
-      </div>`
-    }
-    var time = `<p class ="wrapper__main__body__chat_comment_time">
-    ${message.created_at}
-    </p>`
+      </div>` : ``;
 
     var html = `<p
     class = "wrapper__main__body__chat_comment_name">
     ${message.user_name}
     </p>
-    ${time}
-    ${text}
+    <p class ="wrapper__main__body__chat_comment_time">
+    ${message.created_at}
+    </p>
+    <p class = "wrapper__main__body__chat_comment_text">
+     ${message.content}
+     </p>
     ${image}
 `
 
@@ -43,11 +36,13 @@ return html;
      .done(function(data){
       var html = buildHTML(data);
       $(`.wrapper__main__body__chat`).append(html)
-      $(`.textbox`).val('')
+      $(`.textbox`).val('');
       $(`input`).prop("disabled", false);
+      $(`.new_message`)[0].reset();
      })
      .fail(function(){
       alert('error');
+      $(`input`).prop("disabled", false);
     })
   })
 })
