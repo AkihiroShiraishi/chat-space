@@ -1,26 +1,18 @@
-
-
 $(function(){
-
   var menberlist = [];
-
-  function buildHTML(users){
-
+  function buildUsersHTML(users){
     var html = `<div class="chat-group-user clearfix">
                <p class="chat-group-user__name">${users.name}</p>
                <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${users.id}" data-user-name="${users.name}">追加</a>
                </div>`
-
     return html;
   }
-
   function appendNotUser(users){
     var html = `<div class="chat-group-user clearfix">
                 <p class="chat-group-user__name">${users}</p>
                 </div>`
     return html;
   }
-
   function addUsers(id,name){
     var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
   <input name='group[user_ids][]' type='hidden' value='${id}'>
@@ -29,7 +21,6 @@ $(function(){
 </div>`
   return html;
   }
-
   $(".chat-group-form__input").on("keyup", function(){
     var input = $("#user-search-field").val();
     $.ajax({
@@ -38,12 +29,11 @@ $(function(){
       data: { keyword: input },
       dataType: 'json'
     })
-
     .done(function(users) {
      $("#user-search-result").empty()
      if (users.length !== 0) {
       users.forEach(function(user){
-      var html = buildHTML(user)
+      var html = buildUsersHTML(user)
         $(`#user-search-result`).append(html)
       })
      }
@@ -56,7 +46,6 @@ $(function(){
       alert('名前検索に失敗しました');
    })
   });
-
   $("#user-search-result").on("click",".user-search-add", function(users){
       $(this).parent().remove();
       var id = $(this).data('user-id');
