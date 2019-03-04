@@ -26,12 +26,12 @@ var updating = function(){
   type: 'GET',
   data:{id:message_id},
   dataType: 'json',
- })
- .done(function(new_messages){
-  new_messages.forEach(function(value){
-    var html = buildUpdatingHTML(value);
-    $(`.wrapper__main__body__chat`).append(html)
   })
+ .done(function(new_messages){
+   new_messages.forEach(function(value){
+     var html = buildUpdatingHTML(value);
+     $(`.wrapper__main__body__chat`).append(html)
+   })
  })
  .fail(function(){
       alert('error');
