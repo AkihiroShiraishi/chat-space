@@ -16,15 +16,11 @@ $(function(){
         <p class = "wrapper__main__body__chat_comment_text">
          ${message.content}
          </p>
-        ${image}
-  `
-
-
-return html;
+        ${image}`
+        return html;
   }
 var updating = function(){
  var message_id = $('.message-wrapper:last').data('id');
-console.log(message_id);
  $.ajax({
   url: location.href,
   type: 'GET',
@@ -35,8 +31,11 @@ console.log(message_id);
   new_messages.forEach(function(value){
     var html = buildUpdatingHTML(value);
     $(`.wrapper__main__body__chat`).append(html)
-})
   })
-}
+ })
+ .fail(function(){
+      alert('error');
+  })
+ }
   setInterval(updating, 5000);
 })
