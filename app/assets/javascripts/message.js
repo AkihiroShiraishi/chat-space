@@ -5,17 +5,18 @@ $(function(){
       <image src = "${ message.image.url}" class ="lower-message__image">
       </div>` : ``;
 
-    var html = `<p
-    class = "wrapper__main__body__chat_comment_name">
-    ${message.user_name}
-    </p>
-    <p class ="wrapper__main__body__chat_comment_time">
-    ${message.created_at}
-    </p>
-    <p class = "wrapper__main__body__chat_comment_text">
-     ${message.content}
-     </p>
-    ${image}
+    var html = `
+      <div class="message-wrapper" data-id = ${message.id}>
+        <p class = "wrapper__main__body__chat_comment_name">
+        ${message.user_name}
+        </p>
+        <p class ="wrapper__main__body__chat_comment_time">
+        ${message.created_at}
+        </p>
+        <p class = "wrapper__main__body__chat_comment_text">
+         ${message.content}
+         </p>
+        ${image}
 `
 
 
