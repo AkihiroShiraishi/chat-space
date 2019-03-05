@@ -2,7 +2,8 @@
 .wrapper
  .wrapper__side
   .wrapper__side__header
-   %p Aki
+   %p
+    =current_user.name
    = link_to edit_user_path(current_user) do
     = fa_icon 'cog', class: 'icon'
    = link_to new_group_path do
