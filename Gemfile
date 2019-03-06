@@ -66,5 +66,5 @@ gem 'capybara'
 gem 'pry-rails'
 
 group :production do
-  gem 'unicorn'
+  gem 'unicorn','5.4.1'
 end
