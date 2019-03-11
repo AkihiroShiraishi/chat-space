@@ -32,9 +32,9 @@ var updating = function(){
      var html = buildUpdatingHTML(value);
      $(`.wrapper__main__body__chat`).append(html)
    })
-   .fail(function(){
-      alert('error');
   })
+ .fail(function(){
+      alert('error');
  })
  }
   setInterval(updating, 5000);
