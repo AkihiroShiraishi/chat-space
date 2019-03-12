@@ -27,32 +27,47 @@ R
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|email|integer|null:false, foreign_key: true|
-|password|integer|null:false, foreign_key: true|
-name|integer|null:false, foreign_key: true|
+|email|string|null:false|
+|password|string|null:false|
+|name|string|null:false, index: true, unique: true|
+
 
 ### Association
 - has_many :tweets
-- belongs_to :chat
+- has_many :groups, through: :group_users
+- has_many :group_users
 
-## Chatテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|tweet_id|integer|null: false, foreign_key: true|
-
-### Association
-- has_many :users
-- has_many :tweets
 
 ## Tweetsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|tweet_id|integer|null: false, foreign_key: true|
-|text|text|null:false, foreign_key: true|
-|image|string|null:false, foreign_key: true|
+|text|text|
+|image|string|
+|user_id|reference|null:false, foreign_key: true|
+|group_id|reference|null:false, foreign_key: true|
+
 
 ### Association
 - belongs_to:user
-- belongs_to:chat
+- belongs_to:group
+
+##Groupsテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :users, through: :group_users
+- has_many :tweets
+- has_many :group_users
+
+##Group_usersテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|user_id|reference|null:false, foreign_key: true|
+|group_id|reference|null:false, foreign_key: true|
+
+
+### Association
+- belongs_to :user
+- belongs_to :group
