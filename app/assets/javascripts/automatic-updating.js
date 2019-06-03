@@ -33,9 +33,6 @@ var updating = function(){
      $(`.wrapper__main__body__chat`).append(html)
    })
   })
- .fail(function(){
-      alert('error');
- })
  }
   setInterval(updating, 5000);
 })
